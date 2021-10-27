@@ -5,9 +5,9 @@ import styles from './checker.module.scss';
 
 export default class Checker extends Component {
   render() {
-    const { isBlack } = this.props;    
+    const { isActive, checkerIsBlack } = this.props;
     return (
-      <div className={`${styles.checker} ${isBlack ? styles.black : styles.white}`}>
+      <div className={` ${isActive ? styles.checker : ""} ${checkerIsBlack ? styles.black : styles.white}`}>
       </div>
     )
   }
