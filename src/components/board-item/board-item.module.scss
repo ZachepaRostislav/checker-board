@@ -1,0 +1,21 @@
+.boardItem { 
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  
+  min-height: 96px;
+  
+  font-weight: 900;
+  font-size: 3em;
+
+  color: "black";
+  
+  @media (max-width: 1200px) {
+    max-width: 71px;
+    min-height: 71px;
+  }
+  @media (max-width: 600px) {
+    max-width: 61px;
+    min-height: 66px;
+  }
+}

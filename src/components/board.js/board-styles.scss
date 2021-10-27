@@ -1,0 +1,47 @@
+.board {
+  border: 3px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .row {
+    display: flex;
+
+    .cell {
+      position: relative;
+      max-width: 100px;
+      min-height: 96px;
+      @media (max-width: 1200px) {
+        max-width: 74px;
+        min-height: 71px;
+      }
+      @media (max-width: 600px) {
+        max-width: 61px;
+        min-height: 66px;
+      }
+      .active {
+        background-color: lightpink;
+      }
+    }
+  }
+}
+
+.row:nth-child(odd) .cell:nth-child(even) {
+  background: repeating-linear-gradient(
+    -45deg,
+    #8f8c8c,
+    #8f8c8c 3px,
+    #f7f7f7 3px,
+    #f7f7f7 6px
+  );
+}
+
+.row:nth-child(even) .cell:nth-child(odd) {
+  background: repeating-linear-gradient(
+    -45deg,
+    #8f8c8c,
+    #8f8c8c 3px,
+    #f7f7f7 3px,
+    #f7f7f7 6px
+  );
+}
