@@ -1,4 +1,4 @@
-const createBoard = () => {
+const createBoard = (isChecker = false) => {
   const matrix = []
   const length = 8;
 
@@ -19,7 +19,7 @@ const createBoard = () => {
             matrix[row].push(boardItem)
           } else {
             matrix[row].push({
-              ...boardItem, isItemBlack: true, isItemActive: true, checker: {
+              ...boardItem, isItemBlack: true, isItemActive: isChecker, checker: {
                 isBlack: true,
                 isActive: false
               }
@@ -28,7 +28,7 @@ const createBoard = () => {
         } else {
           if (col % 2 === 0) {
             matrix[row].push({
-              ...boardItem, isItemBlack: true, isItemActive: true, checker: {
+              ...boardItem, isItemBlack: true, isItemActive: isChecker, checker: {
                 isBlack: true,
                 isActive: false
               }
@@ -57,7 +57,7 @@ const createBoard = () => {
             matrix[row].push(boardItem)
           } else {
             matrix[row].push({
-              ...boardItem, isItemBlack: true, isItemActive: true, checker: {
+              ...boardItem, isItemBlack: true, isItemActive: isChecker, checker: {
                 isBlack: false,
                 isActive: false
               }
@@ -66,7 +66,7 @@ const createBoard = () => {
         } else {
           if (col % 2 === 0) {
             matrix[row].push({
-              ...boardItem, isItemBlack: true, isItemActive: true, checker: {
+              ...boardItem, isItemBlack: true, isItemActive: isChecker, checker: {
                 isBlack: false,
                 isActive: false
               }

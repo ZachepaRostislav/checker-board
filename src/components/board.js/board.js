@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import cn from 'classnames';
 
+//const
+import actionCheckers from '../../const/action_types';
+
 // components 
 import Checker from '../checker/checker';
-
-// utils
-import createBoard from '../../utils/create-board';
+import { connect } from 'react-redux';
 
 //@material
 import { Grid } from '@mui/material';
@@ -14,29 +15,27 @@ import { Grid } from '@mui/material';
 import './board-styles.scss';
 
 
+
 class Board extends Component {
-  
-  state = {
-    board: [],
-  }
 
   componentDidMount() {
-    const board = createBoard()
-    this.setState((state) => {
-      return { ...state, board }
-    })
+    this.props.createBoard()
   }
+
+onCellClick =(e)=> {
+  console.log('shashka', e.target)
+  console.log('yacheika',e.currentTarget)
+}
 
   render() {
 
     return (
       <>
         <Grid container item xs={12} sm={12} md={10} lg={10} className='board'>
-          {this.state.board.map((elem, indexRow) => {
+          {this.props.board.map((elem, indexRow) => {
             return (<Grid item xs={12} key={indexRow} className='row'>
               {
                 elem.map((item, indexCell) => {
-                  console.log(item)
                   return (
                     <Grid item xs={12}
                       key={indexCell}
@@ -50,8 +49,6 @@ class Board extends Component {
                       <Checker isActive={item.isItemActive}
                         checkerIsBlack={item.checker.isBlack}
                       />
-                      {/* {indexRow < 3 && item % 2 ? <Checker isBlack={true} /> : null}
-                      {indexRow > 4 && item % 2 ? <Checker isBlack={false} /> : null} */}
                     </Grid>
                   )
                 })
@@ -65,7 +62,20 @@ class Board extends Component {
   }
 }
 
-export default Board;
+const mapStateToProps = (store) => {
+  const { board } = store.board
+  return { board }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createBoard: () => {
+      dispatch({ type: actionCheckers.CREATE_BOARD })
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);
 
 
 

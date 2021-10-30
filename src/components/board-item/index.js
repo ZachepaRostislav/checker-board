@@ -1,1 +1,1 @@
-export {default } from './board-item';
+export { default } from './board-item';
