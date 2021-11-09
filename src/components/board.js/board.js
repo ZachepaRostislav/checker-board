@@ -14,18 +14,15 @@ import { Grid } from '@mui/material';
 //styles
 import './board-styles.scss';
 
-
-
 class Board extends Component {
 
   componentDidMount() {
     this.props.createBoard()
   }
 
-onCellClick =(e)=> {
-  console.log('shashka', e.target)
-  console.log('yacheika',e.currentTarget)
-}
+  onCellClick = (e) => {
+    this.props.initialStep(e.currentTarget.dataset);
+  }
 
   render() {
 
@@ -40,7 +37,7 @@ onCellClick =(e)=> {
                     <Grid item xs={12}
                       key={indexCell}
                       className={cn("cell", {
-                        'active': item === 1
+                        'active': item.isItemStep
                       })}
                       data-row={indexRow}
                       data-cell={indexCell}
@@ -71,6 +68,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     createBoard: () => {
       dispatch({ type: actionCheckers.CREATE_BOARD })
+    },
+    changeStep: (payload) => {
+      dispatch({ type: actionCheckers.STEP_ITEM_BOARD, payload })
+    },
+    initialStep: (payload) => {
+      dispatch({ type: actionCheckers.CHECKER_MOVE_SELECTION, payload })
     }
   }
 }

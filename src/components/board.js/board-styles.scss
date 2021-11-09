@@ -19,11 +19,11 @@
         max-width: 61px;
         min-height: 66px;
       }
-      .active {
-        background-color: lightpink;
-      }
     }
   }
+}
+.active {
+  border: 1px solid blue;
 }
 
 .row:nth-child(odd) .cell:nth-child(even) {

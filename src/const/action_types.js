@@ -1,6 +1,8 @@
 const actionCheckers = {
   CREATE_BOARD:'CREATE_BOARD',
   ADD_ITEM_BOARD:'ADD_ITEM_BOARD',
+  STEP_ITEM_BOARD:'STEP_ITEM_BOARD',
+  CHECKER_MOVE_SELECTION:'CHECKER_MOVE_SELECTION',
 }
 
 export default actionCheckers;

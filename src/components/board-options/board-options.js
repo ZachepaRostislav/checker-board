@@ -17,11 +17,11 @@ class BoardOptions extends Component {
   }
 
   handleOptionClick = (option) => {
-    console.log(option)
     switch (option) {
       case 'START' || 'RESTART': {
         this.setState({ ...this.state, isStart: false })
         this.props.addChecker()
+        break;
       }
       default: {
         console.log('you click me')
