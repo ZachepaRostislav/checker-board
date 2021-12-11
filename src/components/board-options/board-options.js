@@ -20,6 +20,7 @@ class BoardOptions extends Component {
     switch (option) {
       case 'START' || 'RESTART': {
         this.setState({ ...this.state, isStart: false })
+        this.props.createBoard()
         this.props.addChecker()
         break;
       }
@@ -44,6 +45,9 @@ class BoardOptions extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    createBoard: () => {
+      dispatch({ type: actionCheckers.CREATE_BOARD })
+    },
     addChecker: () => {
       dispatch({ type: actionCheckers.ADD_ITEM_BOARD })
     }

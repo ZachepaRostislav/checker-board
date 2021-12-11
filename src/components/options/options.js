@@ -12,7 +12,7 @@ export default class Options extends Component {
 
   render() {
     const { nameBtn, isStart } = this.props;
-    const { handleClick } = this;    
+    const { handleClick } = this;
 
     return (
       <Button variant="contained" size="large" onClick={handleClick}>

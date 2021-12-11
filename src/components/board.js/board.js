@@ -22,13 +22,14 @@ class Board extends Component {
 
   onCellClick = (e) => {
     this.props.initialStep(e.currentTarget.dataset);
+    console.log(e.currentTarget.dataset)
   }
 
   render() {
 
     return (
       <>
-        <Grid container item xs={12} sm={12} md={10} lg={10} className='board'>
+        <Grid container item xs={9} sm={10} md={10} lg={10} className='board'>
           {this.props.board.map((elem, indexRow) => {
             return (<Grid item xs={12} key={indexRow} className='row'>
               {

@@ -32,9 +32,9 @@ export default class App extends Component {
               </Grid>)}
 
             </Grid>
-            <Grid container item xs sm={11} md={10} lg={10}>
+            <Grid container item xs sm={10} md={10} lg={10}>
               <Board />
-              <Grid item xs={2} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+              <Grid item xs={3} sm={2} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                 <HistoryStep counter="Первый Ход" />
               </Grid>
             </Grid>
@@ -43,7 +43,7 @@ export default class App extends Component {
             <Grid container item>
               <Grid item xs={1} >
               </Grid>
-              <Grid container item xs={11} sm={11} md={8.4} lg={8.4}  >
+              <Grid container item xs={7} sm={8} md={8.4} lg={8.4}  >
                 {arrLet.map(item => <Grid item xs key={item}>
                   <BoardItem item={item} />
                 </Grid>)}
