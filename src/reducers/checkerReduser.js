@@ -32,42 +32,46 @@ const checkerReducer = (state = initialState, action) => {
       let counter = { ...state }.counter;
       const { row, cell } = action.payload;
       const isChecker = board[row][cell].isItemActive;
+      const isActiveBoardItem = board[row][cell].isItemStep;
 
       if (counter === 0) {
-        board[7].forEach((item, index) => {
-          if (item.isItemBlack) {
-            board[7][index].isItemStep = false;
-          }
-        })
+        if (board[row][cell].isItemStep) {
+          board[7].forEach((item, index) => {
+            if (item.isItemBlack) {
+              board[7][index].isItemStep = false;
+            }
+          })
 
+          board[row][cell].isItemActive = true;
 
-        board[row][cell].isItemActive = true;
-
-        board[0].forEach((item, index) => {
-          if (item.isItemBlack) {
-            board[0][index].isItemStep = true;
-          }
-        })
-        counter++
+          board[0].forEach((item, index) => {
+            if (item.isItemBlack) {
+              board[0][index].isItemStep = true;
+            }
+          })
+          counter++
+        }
       }
 
       else if (counter === 1) {
-        board[0].forEach((item, index) => {
-          if (item.isItemBlack) {
-            board[0][index].isItemStep = false;
+        if (board[row][cell].isItemStep) {
+          board[0].forEach((item, index) => {
+            if (item.isItemBlack) {
+              board[0][index].isItemStep = false;
+            }
+          })
 
-          }
-        })
+          board[row][cell].isItemActive = true;
+          board[row][cell].checker.isBlack = true;
 
-        board[row][cell].isItemActive = true;
-
-        counter++
-
+          counter++
+        }
       }
 
       else if (counter > 1 && isChecker) {
         const isCheckerWhite = !board[row][cell].checker.isBlack;
         if (counter % 2 === 0 && isCheckerWhite) {
+          board[row][cell].checker.isActive = true
           if (+cell === 0) {
             board[+row - 1][+cell + 1].isItemStep = true
           }
@@ -79,30 +83,64 @@ const checkerReducer = (state = initialState, action) => {
             board[+row - 1][+cell - 1].isItemStep = true
           }
         } else {
-          if (+cell === 0) {
-            board[+row + 1][+cell - 1].isItemStep = true
-          }
-          else if (+cell === 7) {
-            board[+row + 1][+cell + 1].isItemStep = true
-          }
-          else {
-            board[+row + 1][+cell - 1].isItemStep = true
-            board[+row + 1][+cell + 1].isItemStep = true
+          const isCheckerWhite = board[row][cell].checker.isBlack;
+          if (isCheckerWhite) {
+            board[row][cell].checker.isActive = true
+            if (+cell === 0) {
+              board[+row + 1][+cell - 1].isItemStep = true
+            }
+            else if (+cell === 7) {
+              board[+row + 1][+cell + 1].isItemStep = true
+            }
+            else {
+              board[+row + 1][+cell - 1].isItemStep = true
+              board[+row + 1][+cell + 1].isItemStep = true
+            }
           }
         }
-        // board[0].forEach((item, index) => {
-        //   if (item.isItemBlack) {
-        //     board[0][index].isItemStep = false;
-
-        //   }
-        // })
 
         board[row][cell].isItemActive = true;
 
+      } else if (counter > 1 && isActiveBoardItem) {
+        const isCheckerWhite = !board[row][cell].checker.isBlack;
+        if (counter % 2 === 0 && isCheckerWhite) {
+          board.forEach(item => {
+            item.forEach(elem => {
+              elem.isItemStep = false
+              if (!elem.checker.isBlack) {
+                elem.isItemActive = false
+                elem.checker.isActive = false
+              }
+            })
+          })
+          board[row][cell].isItemActive = true;
+          board[row][cell].checker.isBlack = false;
+
+          if (+row === 0) {
+            alert('white win')
+          }
+
+        } else {
+          board.forEach(item => {
+            item.forEach(elem => {
+              elem.isItemStep = false
+              if (elem.checker.isBlack) {
+                elem.isItemActive = false
+                elem.checker.isActive = false
+              }
+            })
+          })
+
+          board[row][cell].isItemActive = true;
+          board[row][cell].checker.isBlack = true;
+
+          if (+row === 7) {
+            alert('black win')
+          }
+        }
+
         counter++
-
       }
-
 
       return { ...state, board, counter }
     }

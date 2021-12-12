@@ -22,7 +22,7 @@ const createBoard = (isChecker = false) => {
             matrix[row].push({
               ...boardItem, isItemBlack: true, isItemActive: isChecker,
                checker: {
-                isBlack: true,
+                isBlack: false,
                 isActive: false
               }
             })
@@ -33,7 +33,7 @@ const createBoard = (isChecker = false) => {
             matrix[row].push({
               ...boardItem, isItemBlack: true, isItemActive: isChecker,
                checker: {
-                isBlack: true,
+                isBlack: false,
                 isActive: false
               }
             })
