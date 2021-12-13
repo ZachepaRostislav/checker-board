@@ -3,7 +3,7 @@ import actionCheckers from '../const/action_types';
 
 const initialState = {
   board: [],
-  initialStep: false,
+  isGameOver: false,
   counter: -1,
 };
 
@@ -29,11 +29,15 @@ const checkerReducer = (state = initialState, action) => {
     case actionCheckers.CHECKER_MOVE_SELECTION: {
       console.log('CHECKER_MOVE_SELECTION')
       const board = state.board.slice();
+      const isGameOver = state.isGameOver;
       let counter = { ...state }.counter;
       const { row, cell } = action.payload;
       const isChecker = board[row][cell].isItemActive;
       const isActiveBoardItem = board[row][cell].isItemStep;
-
+      if (isGameOver) {
+        alert('game over press restart')
+        return { ...state, board }
+      }
       if (counter === 0) {
         if (board[row][cell].isItemStep) {
           board[7].forEach((item, index) => {
@@ -87,7 +91,7 @@ const checkerReducer = (state = initialState, action) => {
           if (isCheckerWhite) {
             board[row][cell].checker.isActive = true
             if (+cell === 0) {
-              board[+row + 1][+cell - 1].isItemStep = true
+              board[+row + 1][+cell + 1].isItemStep = true
             }
             else if (+cell === 7) {
               board[+row + 1][+cell + 1].isItemStep = true
@@ -104,6 +108,7 @@ const checkerReducer = (state = initialState, action) => {
       } else if (counter > 1 && isActiveBoardItem) {
         const isCheckerWhite = !board[row][cell].checker.isBlack;
         if (counter % 2 === 0 && isCheckerWhite) {
+          
           board.forEach(item => {
             item.forEach(elem => {
               elem.isItemStep = false
@@ -118,6 +123,7 @@ const checkerReducer = (state = initialState, action) => {
 
           if (+row === 0) {
             alert('white win')
+            return { ...state, board, isGameOver: true }
           }
 
         } else {
@@ -136,6 +142,7 @@ const checkerReducer = (state = initialState, action) => {
 
           if (+row === 7) {
             alert('black win')
+            return { ...state, board, isGameOver: true }
           }
         }
 
