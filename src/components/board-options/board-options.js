@@ -19,7 +19,7 @@ class BoardOptions extends Component {
   handleOptionClick = (option) => {
     switch (option) {
       case 'START' || 'RESTART': {
-        this.setState({ ...this.state, isStart: false })
+        this.setState({ ...this.state, isStart: false})
         this.props.createBoard()
         this.props.addChecker()
         break;

@@ -80,31 +80,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);
-
-
-
-
-
-
-
-// onCellClick = (event) => {
-  //   const { row, cell } = event.target.dataset;
-  //   const rowNumber = +row;
-  //   const cellNumber = +cell;
-  //   const { board } = this.state;
-
-  //   board.forEach((item, indexRow) => {
-  //     item.forEach((elem, indexCell) => {
-  //       // board[indexRow][indexCell] = +Boolean(indexCell === cell && indexRow === row);
-
-  //       if (indexCell === cellNumber && indexRow === rowNumber) {
-  //         board[indexRow][indexCell] = 1;
-  //       } else {
-  //         board[indexRow][indexCell] = 0;
-  //       }
-  //     })
-  //   });
-
-
-  //   this.setState({ board: [...board] });
-  // }

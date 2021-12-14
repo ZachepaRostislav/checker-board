@@ -9,15 +9,15 @@
 
     .cell {
       position: relative;
-      max-width: 100px;
-      min-height: 96px;
+      max-width: 110px;
+      min-height: 110px;
       @media (max-width: 1200px) {
-        max-width: 74px;
-        min-height: 71px;
-      }
+        max-width: 84px;
+        min-height: 78px;
+      }  
       @media (max-width: 600px) {
         max-width: 61px;
-        min-height: 66px;
+        min-height: 61px;
       }
     }
   }

@@ -25,30 +25,27 @@ export default class App extends Component {
         <Container fixed>
           <Grid container maxWidth='lg'>
             <BoardOptions />
-            {/* <Buttons /> */}
-            <Grid item xs={1} style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-              {arrNum.map(item => <Grid item xs key={item}>
-                <BoardItem item={item} />
-              </Grid>)}
-
-            </Grid>
-            <Grid container item xs sm={10} md={10} lg={10}>
-              <Board />
-              <Grid item xs={3} sm={2} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <HistoryStep counter="Первый Ход" />
-              </Grid>
-            </Grid>
-
-
-            <Grid container item>
-              <Grid item xs={1} >
-              </Grid>
-              <Grid container item xs={7} sm={8} md={8.4} lg={8.4}  >
-                {arrLet.map(item => <Grid item xs key={item}>
+            <Grid container item xs={12}>
+              <Grid item xs={1} style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                {arrNum.map(item => <Grid item xs key={item}>
                   <BoardItem item={item} />
                 </Grid>)}
               </Grid>
-
+              <Grid container item xs>
+                <Board />
+                <Grid item xs={2} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                  <HistoryStep counter="Первый Ход" />
+                </Grid>
+              </Grid>
+              <Grid container item>
+                <Grid item xs={1} >
+                </Grid>
+                <Grid container item xs={8} sm={9} md={9} lg={9}  >
+                  {arrLet.map(item => <Grid item xs key={item}>
+                    <BoardItem item={item} />
+                  </Grid>)}
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
 

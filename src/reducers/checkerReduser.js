@@ -35,9 +35,9 @@ const checkerReducer = (state = initialState, action) => {
       const isChecker = board[row][cell].isItemActive;
       const isActiveBoardItem = board[row][cell].isItemStep;
       if (isGameOver) {
-        alert('game over press restart')
+        alert('game over press restart')       
         return { ...state, board }
-      }
+      } 
       if (counter === 0) {
         if (board[row][cell].isItemStep) {
           board[7].forEach((item, index) => {
@@ -73,7 +73,7 @@ const checkerReducer = (state = initialState, action) => {
       }
 
       else if (counter > 1 && isChecker) {
-        const isCheckerWhite = !board[row][cell].checker.isBlack;
+        const isCheckerWhite = !board[row][cell].checker.isBlack;       
         if (counter % 2 === 0 && isCheckerWhite) {
           board[row][cell].checker.isActive = true
           if (+cell === 0) {
@@ -94,7 +94,7 @@ const checkerReducer = (state = initialState, action) => {
               board[+row + 1][+cell + 1].isItemStep = true
             }
             else if (+cell === 7) {
-              board[+row + 1][+cell + 1].isItemStep = true
+              board[+row + 1][+cell - 1].isItemStep = true
             }
             else {
               board[+row + 1][+cell - 1].isItemStep = true
@@ -108,7 +108,7 @@ const checkerReducer = (state = initialState, action) => {
       } else if (counter > 1 && isActiveBoardItem) {
         const isCheckerWhite = !board[row][cell].checker.isBlack;
         if (counter % 2 === 0 && isCheckerWhite) {
-          
+
           board.forEach(item => {
             item.forEach(elem => {
               elem.isItemStep = false
