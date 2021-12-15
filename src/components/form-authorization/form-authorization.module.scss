@@ -1,0 +1,36 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+.h1 {
+    font-size: 50px;
+    font-weight: 700;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+input {
+    padding: 15px 25px;
+    margin-bottom: 10px;
+}
+
+.button {    
+    border-radius: 4px;
+    border: transparent;
+    background-color: rgb(13, 132, 153);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 15px 35px;    
+    transition: 0.6s all;
+}
+.button:hover {
+    background-color: #fff;
+    border:1px solid rgb(13, 132, 153);
+    cursor: pointer;
+    color:rgb(13, 132, 153);
+}
+
+.error {
+    color:red;
+}

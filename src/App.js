@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // components
 import Board from './components/board.js';
 import BoardItem from './components/board-item';
+import FormAuthorization from './components/form-authorization/form-authorization.js';
 
 // import Buttons from './components/buttons/buttons.js';
 import HistoryStep from './components/history-step/history-step.js';
@@ -15,6 +16,7 @@ import { Box } from '@mui/system';
 import { arrNum, arrLet } from './const/const.js';
 import BoardOptions from './components/board-options/board-options.js';
 
+
 export default class App extends Component {
 
   render() {
@@ -24,6 +26,7 @@ export default class App extends Component {
       <Box p={1.25}>
         <Container fixed>
           <Grid container maxWidth='lg'>
+            <FormAuthorization/>
             <BoardOptions />
             <Grid container item xs={12}>
               <Grid item xs={1} style={{ display: 'flex', flexDirection: 'column-reverse' }}>
