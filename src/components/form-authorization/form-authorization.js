@@ -1,11 +1,16 @@
 import React from 'react';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 // @material
 import { Grid } from '@mui/material';
 
 //styles
 import styles from './form-authorization.module.scss';
+
+const dataTransmission = (e) => {
+    e.preventDefault();
+    window.location = 'http://localhost:3000/board'
+}
 
 const FormAuthorization = () => {
     const [email, setEmail] = useState('')
@@ -14,15 +19,17 @@ const FormAuthorization = () => {
     const [passwordDirty, setPasswordDirty] = useState(false)
     const [emailError, setEmailError] = useState('Email cannot be empty')
     const [passwordError, setPasswordError] = useState('Password cannot be empty')
-    const [formValid,setFormValid] = useState(false)
+    const [formValid, setFormValid] = useState(false)
 
     useEffect(() => {
-        if(emailError || passwordError) {
+        if (emailError || passwordError) {
             setFormValid(false)
-        }else {
+        } else {
             setFormValid(true)
         }
-    },[emailError,passwordError])
+    }, [emailError, passwordError])
+
+
 
     const emailHandler = (e) => {
         setEmail(e.target.value)
@@ -35,14 +42,14 @@ const FormAuthorization = () => {
         }
     }
 
-    const passwordHandler=(e)=> {
+    const passwordHandler = (e) => {
         setPassword(e.target.value)
-        if(e.target.value.length < 3 ||  e.target.value.length > 16) {
+        if (e.target.value.length < 3 || e.target.value.length > 16) {
             setPasswordError('Password must be longer than 3 and less than 16')
-            if(e.target.value) {
+            if (e.target.value) {
                 setPasswordError('Password cannot be empty')
             }
-        }else {
+        } else {
             setPasswordError('')
         }
     }
@@ -78,13 +85,13 @@ const FormAuthorization = () => {
                 )}
                 <input
                     onBlur={(e) => blurHandler(e)}
-                    onChange={(e)=>passwordHandler(e)}
+                    onChange={(e) => passwordHandler(e)}
                     value={password}
                     name="password"
                     type="password"
                     placeholder="Password"
                 />
-                <button disabled={!formValid} className={styles.button}>Submit</button>
+                <button onClick={dataTransmission} disabled={!formValid} className={styles.button}>Submit</button>
             </form>
         </Grid>
     )

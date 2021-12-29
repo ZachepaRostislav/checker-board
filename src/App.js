@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 
-// components
-import Board from './components/board.js';
-import BoardItem from './components/board-item';
+// components 
 import FormAuthorization from './components/form-authorization/form-authorization.js';
-
-// import Buttons from './components/buttons/buttons.js';
-import HistoryStep from './components/history-step/history-step.js';
+import EverythingHere from './components/everything-here/everything-here.js';
 
 // @material
 import { Container, Grid } from '@mui/material';
 import { Box } from '@mui/system';
-
-// const
-import { arrNum, arrLet } from './const/const.js';
-import BoardOptions from './components/board-options/board-options.js';
-
-
+import { Route, Routes, Link } from 'react-router-dom';
 export default class App extends Component {
 
   render() {
@@ -26,32 +17,19 @@ export default class App extends Component {
       <Box p={1.25}>
         <Container fixed>
           <Grid container maxWidth='lg'>
-            <FormAuthorization/>
-            <BoardOptions />
-            <Grid container item xs={12}>
-              <Grid item xs={1} style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-                {arrNum.map(item => <Grid item xs key={item}>
-                  <BoardItem item={item} />
-                </Grid>)}
-              </Grid>
-              <Grid container item xs>
-                <Board />
-                <Grid item xs={2} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <HistoryStep counter="Первый Ход" />
-                </Grid>
-              </Grid>
-              <Grid container item>
-                <Grid item xs={1} >
-                </Grid>
-                <Grid container item xs={8} sm={9} md={9} lg={9}  >
-                  {arrLet.map(item => <Grid item xs key={item}>
-                    <BoardItem item={item} />
-                  </Grid>)}
-                </Grid>
-              </Grid>
-            </Grid>
+            <>
+              <Link to='/'></Link>
+              <Link to='/board'></Link>
+            </>
+            <>
+              <Routes>
+                <Route path='/' element={<FormAuthorization />}>
+                </Route>
+                <Route path='/board' element={<EverythingHere />}>
+                </Route>
+              </Routes>
+            </>
           </Grid>
-
         </Container>
       </Box>
 
